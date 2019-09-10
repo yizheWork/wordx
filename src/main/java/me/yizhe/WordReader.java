@@ -17,8 +17,6 @@ import org.dom4j.io.SAXReader;
 
 public class WordReader {
 
-  private static final SAXReader READER = new SAXReader();
-
 
   public static Map<String, Integer> countMap(String wordFilePath, String documentPath) throws IOException {
     final Document document = readWordFile(FileReader.readClassPathFile(wordFilePath), documentPath);
@@ -55,7 +53,7 @@ public class WordReader {
 
   private static Document readXmlFile(InputStream inputStream) throws IOException {
     try {
-      return READER.read(inputStream);
+      return new SAXReader().read(inputStream);
     } catch (DocumentException e) {
       throw new IOException(e);
     }
